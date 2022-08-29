@@ -2,7 +2,7 @@ package TdaLista;
 
 import java.io.ObjectStreamException;
 
-public class SList {
+public class SList<T> {
     private Object[] sLista= new Object[200];
     private int size = 0;
 
@@ -11,126 +11,119 @@ public class SList {
         return sLista == null;
     }
 
-    public void append(Object dato){
-        if(isEmpty()){
-            sLista[size] = dato;
-        }
-        else{
-            while(sLista[size] != null){
-                size++;
-            }
-            sLista[size] = dato;
-        }
-        size = 0;
-    }
-
-    public void appendComienzo(Object dato) {
+    public void append(T dato) {
         if (isEmpty()) {
-            sLista[size] = dato;
+            sLista[0] = dato;
+            size++;
         } else {
-            while (sLista[size] != null) {
-                size++;
-            }
-             while (size >= 1) {
-                sLista[size--] = sLista[size];
-             }
-             sLista[0] = dato;
-        }
-
-    }
-
-    public void appendEntreDato(Object dato, Object siguiente){
-        if (isEmpty()) {
             sLista[size] = dato;
-        }else{
-            while(sLista[size] != null){
-                if(sLista[size] == siguiente){
-                    break;
-                }
-                size++;
-            }
-            int objetoSeparar = size;
-
-            while (sLista[size] != null) {
-                size++;
-            }
-            while (size > objetoSeparar) {
-                sLista[size--] = sLista[size];
-            }
-            sLista[objetoSeparar] = dato;
-
-        }
-    }
-
-    public void appendEntre(Object dato, int indice){
-        if (isEmpty()) {
-            sLista[size] = dato;
-        }else{
-
-            while (sLista[size] != null) {
-                size++;
-            }
-            while (size > indice) {
-                sLista[size--] = sLista[size];
-            }
-            sLista[indice] = dato;
-
-        }
-    }
-
-    public Object obtenerIndice(Object dato){
-        while(sLista[size] != null){
-            if(sLista[size] == dato){
-                break;
-            }
             size++;
         }
-        return size;
+    }
+
+    public void appendComienzo(T dato) {
+        if (isEmpty()) {
+            sLista[0] = dato;
+            size++;
+        } else {
+            int i = size;
+             while(i >= 1){
+                 sLista[i--] = sLista[i];
+
+             }
+             sLista[0] = dato;
+             size++;
+        }
+
+    }
+
+    public void appendEntreDato(T dato, T next){
+        if (isEmpty()) {
+            sLista[0] = dato;
+            size++;
+        }else{
+            int i;
+            for(i = size; i >= 0; i-- ){
+                if(sLista[i] == next){
+                    break;
+                }
+            }
+            int objetoSeparar = i;
+            int aux = size;
+
+            while (aux > objetoSeparar) {
+                sLista[aux --] = sLista[aux];
+            }
+            sLista[objetoSeparar] = dato;
+            size++;
+
+        }
+    }
+
+    public void appendEntre(T dato, int indice){
+        if (isEmpty()) {
+            sLista[size] = dato;
+            size ++;
+        }else{
+            int i = size;
+            while(i >= indice){
+                sLista[i--] = sLista[i];
+            }
+            sLista[indice] = dato;
+            size ++;
+        }
+    }
+
+    public int obtenerIndice(T dato){
+        int i = 0;
+        while(sLista[i] != null){
+            if(sLista[i] == dato){
+                break;
+            }
+            i++;
+        }
+        return i;
+    }
+
+    public Object buscar(int indice){
+        return sLista[indice];
     }
 
 
-    public boolean esta(Object dato){
+    public boolean esta(T dato){
         boolean estado = false;
-        while(sLista[size] != null){
-            if(sLista[size] == dato){
+        int i = 0;
+        while(sLista[i] != null){
+            if(sLista[i] == dato){
                 estado = true;
                 break;
             }
-            size++;
+            i++;
         }
-        size = 0;
         return estado;
     }
 
-    public void borrar(Object dato){
-        while(sLista[size] != null){
-            size++;
-        }
-
-        int ultimo = size;
-        size = 0;
-
-        while(sLista[size] != null){
-            if(sLista[size] == dato){
-                sLista[size] = null;
+    public void borrar(T dato){
+        int i = 0;
+        while(sLista[i] != null){
+            if(sLista[i] == dato){
+                sLista[i] = null;
                 break;
             }
-            size++;
+            i++;
         }
-
-
-        for(int borrada = size + 1 ; size <= ultimo; size++ ){
-            sLista[size] = sLista[size + 1];
+        for(int aux = i ; aux <= size; aux++ ){
+            sLista[aux] = sLista[aux + 1];
         }
-        size = 0;
+        size --;
     }
 
     public String toString(){
         String lista = "";
-        for(size = 0; sLista[size] != null; size++){
-            lista = lista + " " + sLista[size];
+        for(int i = 0; sLista[i] != null; i++){
+            lista = lista + " " + sLista[i];
         }
-        size = 0;
+
         return lista;
     }
 
