@@ -10,8 +10,7 @@ public class App {
         SList listaNumerosE = new SList();
         SList lista2 = new SList();
 
-        lista2.append(77);
-        System.out.println(lista2);
+
 
         int dato = 0;
 
@@ -21,12 +20,11 @@ public class App {
         }
 
 
-
-
-        System.out.println(listaNumerosE.buscar(19));
         System.out.println(listaNumerosE);
 
 
+        System.out.println(listaNumerosE);
+        System.out.println(listaNumerosE.buscarDato(19));
 
 
 

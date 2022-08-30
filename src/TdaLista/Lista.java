@@ -44,7 +44,7 @@ public class Lista<T> {
         size++;
     }
 
-    public int obtenerIndiceDe(T dato){
+    public int obtenerIndiceDe(Object dato){
         Nodo siguiente = new Nodo();
         Nodo anterior = new Nodo();
         siguiente.setSiguiente(inicio);
@@ -64,7 +64,7 @@ public class Lista<T> {
         return indice - 1 ;
     }
 
-    public Object buscarPorIndice(int indice){
+    public Object buscarPorDato(int indice){
         Nodo aux = new Nodo();
         aux.setSiguiente(inicio);
 
@@ -77,9 +77,10 @@ public class Lista<T> {
             aux = aux.getSiguiente();
             i++;
         }
-        return aux.getDato();
+        return aux;
 
     }
+
 
     public void borrar(T dato) {
         Nodo anterior = new Nodo();
@@ -103,6 +104,33 @@ public class Lista<T> {
         }
 
         anterior.setSiguiente(siguiente);
+
+        size --;
+    }
+
+    public void borrarIndice(int indice){
+        Nodo anterior = new Nodo();
+        Nodo actual = new Nodo();
+        Nodo siguiente = new Nodo();
+
+        siguiente.setSiguiente(inicio);
+        actual.setSiguiente(siguiente);
+        anterior.setSiguiente(actual);
+
+        int i = 0;
+        while (actual.getSiguiente() != null) {
+
+            if ((i == indice + 2)) {
+                break;
+            }
+            actual = actual.getSiguiente();
+            anterior = anterior.getSiguiente();
+            siguiente = siguiente.getSiguiente();
+            i++;
+
+        }
+        anterior.setSiguiente(siguiente);
+
 
         size --;
     }
@@ -142,6 +170,23 @@ public class Lista<T> {
             anterior = anterior.getSiguiente();
         }
         size++;
+    }
+
+
+    public void set(Object dato, int indice){
+        Nodo aux = new Nodo();
+
+        aux.setSiguiente(inicio);
+
+        int i = -1;
+        while(aux.getSiguiente() != null){
+            if(i ==  indice){
+                aux.setDato(dato);
+            }
+            i++;
+            aux = aux.getSiguiente();
+        }
+
     }
 
     public String toString(){

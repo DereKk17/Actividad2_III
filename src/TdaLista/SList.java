@@ -2,7 +2,7 @@ package TdaLista;
 
 import java.io.ObjectStreamException;
 
-public class SList<T> {
+public class SList<E> {
     private Object[] sLista= new Object[200];
     private int size = 0;
 
@@ -11,7 +11,7 @@ public class SList<T> {
         return sLista == null;
     }
 
-    public void append(T dato) {
+    public void append(E dato) {
         if (isEmpty()) {
             sLista[0] = dato;
             size++;
@@ -21,7 +21,7 @@ public class SList<T> {
         }
     }
 
-    public void appendComienzo(T dato) {
+    public void appendComienzo(E dato) {
         if (isEmpty()) {
             sLista[0] = dato;
             size++;
@@ -37,7 +37,7 @@ public class SList<T> {
 
     }
 
-    public void appendEntreDato(T dato, T next){
+    public void appendEntreDato(E dato, E next){
         if (isEmpty()) {
             sLista[0] = dato;
             size++;
@@ -60,7 +60,7 @@ public class SList<T> {
         }
     }
 
-    public void appendEntre(T dato, int indice){
+    public void appendEntre(E dato, int indice){
         if (isEmpty()) {
             sLista[size] = dato;
             size ++;
@@ -74,7 +74,7 @@ public class SList<T> {
         }
     }
 
-    public int obtenerIndice(T dato){
+    public int obtenerIndice(Object dato){
         int i = 0;
         while(sLista[i] != null){
             if(sLista[i] == dato){
@@ -89,8 +89,20 @@ public class SList<T> {
         return sLista[indice];
     }
 
+    public E buscarDato(Object dato){
 
-    public boolean esta(T dato){
+        int i = 0;
+        while(sLista[i] != null){
+            if(sLista[i] == dato){
+                break;
+            }
+            i++;
+        }
+        return (E) sLista[i];
+    }
+
+
+    public boolean esta(E dato){
         boolean estado = false;
         int i = 0;
         while(sLista[i] != null){
@@ -103,7 +115,7 @@ public class SList<T> {
         return estado;
     }
 
-    public void borrar(T dato){
+    public void borrar(E dato){
         int i = 0;
         while(sLista[i] != null){
             if(sLista[i] == dato){
@@ -118,6 +130,15 @@ public class SList<T> {
         size --;
     }
 
+    public void borrarIndice(int indice){
+        sLista[indice] = null;
+
+        for(int aux = indice ; aux <= size; aux++ ){
+            sLista[aux] = sLista[aux + 1];
+        }
+        size --;
+    }
+
     public String toString(){
         String lista = "";
         for(int i = 0; sLista[i] != null; i++){
@@ -125,6 +146,11 @@ public class SList<T> {
         }
 
         return lista;
+    }
+
+
+    public int size(){
+        return size;
     }
 
 }

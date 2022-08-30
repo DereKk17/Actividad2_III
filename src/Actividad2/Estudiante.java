@@ -1,7 +1,8 @@
 package Actividad2;
 
-public class Estudiante {
 
+
+public class Estudiante {
     private String nombre;
     private int edad;
     private String genero;
@@ -16,6 +17,7 @@ public class Estudiante {
         this.edad = edad;
         this.genero = genero;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -40,4 +42,14 @@ public class Estudiante {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", genero='" + genero + '\'' +
+                '}';
+    }
+
 }
