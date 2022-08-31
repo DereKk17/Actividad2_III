@@ -47,9 +47,9 @@ public class Funcion {
 
         }else{
             estudiante = (Estudiante) lista.buscarPorDato(i);
-            if(estudiante.getGenero() == "F" && (i > 0 && i < lista.size() - 1)){
+            if(estudiante.getGenero() == "F" ){
                 estSiguiente = (Estudiante) lista.buscarPorDato(i + 1);
-                if(estudiante.getGenero() == "M"){
+                if(estSiguiente.getGenero() == "M"){
                     lista.set(estSiguiente,i);
                     lista.set(estudiante, i + 1);
                 }
@@ -63,9 +63,9 @@ public class Funcion {
 
         }else{
             estudiante = (Estudiante) lista.buscarPorDato(i);
-            if(estudiante.getGenero() == "M" && (i > 0 && i < lista.size() - 1)){
+            if(estudiante.getGenero() == "M"){
                 estSiguiente = (Estudiante) lista.buscarPorDato(i + 1);
-                if(estudiante.getGenero() == "F"){
+                if(estSiguiente.getGenero() == "F"){
                     lista.set(estSiguiente,i);
                     lista.set(estudiante, i + 1);
                 }

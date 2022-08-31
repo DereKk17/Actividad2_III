@@ -89,9 +89,9 @@ public class App {
         siguiente =  misEstudiantes.buscarEst(misEstudiantes.size());
 
         if(estudiante.getGenero() == "M"){
-            misEstudiantes.transformarListaMasculino(estudiante,siguiente,i);
+            misEstudiantes.transformarListaMasculino(estudiante,siguiente,0);
         }else{
-            misEstudiantes.transformarListaFemenino(estudiante,siguiente,i);
+            misEstudiantes.transformarListaFemenino(estudiante,siguiente,0);
         }
     }
 
