@@ -10,12 +10,15 @@ public class App {
     private static Funcion misEstudiantesS = (new Funcion());
     public static void main(String[] args) {
 
-        agregarEstudianteS();
-        agregarEstudianteS();
-        agregarEstudianteS();
-        mostrarEstudiantesS();
-        borrarEstudianteS();
-        mostrarEstudiantesS();
+
+        for (int i = 0; i < 5; i++){
+            agregarEstudiante();
+        }
+
+        mostrarEstudiantes();
+        transformarLista();
+        mostrarEstudiantes();
+
 
     }
 
@@ -26,8 +29,8 @@ public class App {
 
 
     public static void agregarEstudiante(){
-        System.out.println("Nombre del estudiante");
-        String nombre = leer.next();
+
+        String nombre = "estudiante" + String.valueOf((int)Math.floor(Math.random()*(1000 - 1 + 1) + (1)));
 
         int edad = (int) Math.floor(Math.random()*(20 - 3 + 1) + (3));
         int opcionGenero = (int) Math.floor(Math.random()*(2 - 1 + 1) + (1));
@@ -43,8 +46,7 @@ public class App {
     }
 
     public static void agregarEstudianteS(){
-        System.out.println("Nombre del estudiante");
-        String nombre = leer.next();
+        String nombre = "estudiante" + String.valueOf((int)Math.floor(Math.random()*(1000 - 1 + 1) + (1)));
 
         int edad = (int) Math.floor(Math.random()*(20 - 3 + 1) + (3));
         int opcionGenero = (int) Math.floor(Math.random()*(2 - 1 + 1) + (1));

@@ -77,7 +77,7 @@ public class Lista<T> {
             aux = aux.getSiguiente();
             i++;
         }
-        return aux;
+        return aux.getDato();
 
     }
 
